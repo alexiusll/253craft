@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>主页</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/plugins/bootstrap-3.3.7/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all">
+    <link th:href="@{/plugins/magnific-popup/css/magnific-popup.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/plugins/live2d/assets/waifu.min.css}"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all">
+</head>
+<body>
+
+<div class="wrapper">
+
+    <!--		引入抽取的topbar-->
+    <div th:replace="comm/navbar::topbar(activeUri='index')"></div>
+
+    <div class="fakeHeader"></div>
+
+    <div class="banner">
+        <div class="banner-container">
+            <img class="logo-big-img" th:src="@{/img/web/logo_big.png}" alt="">
+            <a class="download-game-button" th:href="@{/download}">下载客户端</a>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="content">
+            <div class="container">
+                <div class="title">
+                    <h1>hi~欢迎来到253CRAFT服务器</h1>
+                    <h4>这是一个以冒险为主题的mods服务器,在这里你可以</h4>
+                </div>
+
+                <div class="col-sm-12 col-md-12 server-about-container">
+                    <div class="col-sm-3 col-md-3 server-about">
+                        <img th:src="@{/img/Minecraft/minecraft (3).png}" alt="">
+                        <h2>生存</h2>
+                        <span>基于minecraft的1.12.2原版打造</span>
+                    </div>
+
+                    <div class="col-sm-3 col-md-3 server-about">
+                        <img th:src="@{/img/Minecraft/minecraft (3).jpg}" alt="">
+                        <h2>冒险</h2>
+                        <span>这是一个以冒险为主题的mods服务器,整合例如暮色森林，天际，神秘时代等著名冒险模组</span>
+                    </div>
+
+                    <div class="col-sm-3 col-md-3 server-about">
+                        <img th:src="@{/img/Minecraft/minecraft (4).jpg}" alt="">
+                        <h2>建造</h2>
+                        <span>服务器也整合了很多有趣的科技模组，可以利用这些科技模组建造建筑</span>
+                    </div>
+
+                    <div class="col-sm-3 col-md-3 server-about">
+                        <img th:src="@{/img/Minecraft/minecraft (1).jpg}" alt="">
+                        <h2>养老</h2>
+                        <span>如果玩累了，服务器整合了温泉插件，也可以挂机养老</span>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-12 server-info-container">
+                    <div class="server-info-img"></div>
+                    <div class="server-info-item">
+                        <p class="server-info-title">253CRAFT我的世界服务器</p>
+                        <div class="server-info-content">
+                            <p class="">介绍：有趣的冒险服</p>
+                            <p class="">服务器版本： 1.12.2 CatServer(plugin+mods)</p>
+                            <p class="">253服务器交流群: 453343340</p>
+                            <p class="">服务器地址: 群内</p>
+                            <p class="">人数：最大50人</p>
+                            <p class="">配置 ：PVP false 白名单 false 难度 1</p>
+                        </div>
+
+
+                        <div class="server-info-a">
+                            <p>
+                                <a href="">服务器相关教程</a> <a href="">服务器赞助链接</a> <a href="">服务器最新通知</a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="container">
+                <div class="title">
+                    <h1>服务器的核心MODS</h1>
+                    <h3>这些mods服务器均已实装</h3>
+                </div>
+                <div class="col-sm-6 col-md-3 mods_about">
+                    <a href="https://www.mcmod.cn/class/366.html"> <img th:src="@{/img/mods/Slach _Blade.jpg}" alt="">
+                    </a>
+                    <h2>拔刀剑</h2>
+                    <p>十步杀一人，千里不留行。</p>
+                    <p>事了拂衣去，深藏身与名。</p>
+                    <p>——《侠客行》李白</p>
+                </div>
+                <div class="col-sm-6 col-md-3 mods_about">
+                    <a href="https://www.mcmod.cn/class/1269.html"> <img th:src="@{/img/mods/Advent_of_Ascension.jpg}" alt="">
+                    </a>
+                    <h2>虚无世界</h2>
+                    <p>一个由Xolova建立的大型动作冒险Minecraft mod</p>
+                </div>
+                <div class="col-sm-6 col-md-3 mods_about">
+                    <a href="https://www.mcmod.cn/class/332.html"> <img th:src="@{/img/mods/DGgD.jpg}" alt="">
+                    </a>
+                    <h2>植物魔法</h2>
+                    <p>植物魔法在本质上是一个披着魔法外壳的科技向模组，其主题是蕴藏在自然中的魔力。</p>
+                </div>
+                <div class="col-sm-6 col-md-3 mods_about">
+                    <a href="https://www.mcmod.cn/class/353.html"> <img th:src="@{/img/mods/ProjectE.jpg}" alt="">
+                    </a>
+                    <h2>等价交换</h2>
+                    <p>在等价交换2MOD中，大部分物品都有自己的EMC值，拥有此值的物品可以等价交换。</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="title">
+                <h1>服务器的截图</h1>
+                <h3>一起来欣赏服务器中大佬的建筑！</h3>
+            </div>
+            <div class="server_img">
+                <div class="server_img_pop">
+                    <a th:href="@{/img/253craft/game (1).jpg}" class="popup-img"
+                    th:style="'background-image: url(&quot;'+ @{/img/253craft/game (1).jpg} +'&quot;)'">
+                    </a>
+                </div>
+                <div class="server_img_pop">
+                    <a th:href="@{/img/253craft/game (2).jpg}" class="popup-img"
+                       th:style="'background-image: url(&quot;'+ @{/img/253craft/game (2).jpg} +'&quot;)'">
+                    </a>
+                </div>
+                <div class="server_img_pop">
+                    <a th:href="@{/img/253craft/game (3).jpg}" class="popup-img"
+                       th:style="'background-image: url(&quot;'+ @{/img/253craft/game (3).jpg} +'&quot;)'">
+                    </a>
+                </div>
+                <div class="server_img_pop">
+                    <a th:href="@{/img/253craft/game (4).jpg}" class="popup-img"
+                       th:style="'background-image: url(&quot;'+ @{/img/253craft/game (4).jpg} +'&quot;)'">
+                    </a>
+                </div>
+
+                <div class="server_img_pop">
+                    <a th:href="@{/img/253craft/game (4).png}" class="popup-img"
+                       th:style="'background-image: url(&quot;'+ @{/img/253craft/game (4).png} +'&quot;)'">
+                    </a>
+                </div>
+
+                <div class="server_img_pop">
+                    <a th:href="@{/img/253craft/game (5).png}" class="popup-img"
+                       th:style="'background-image: url(&quot;'+ @{/img/253craft/game (5).png} +'&quot;)'">
+                    </a>
+                </div>
+
+                <div class="server_img_pop">
+                    <a th:href="@{/img/253craft/game (6).png}" class="popup-img"
+                       th:style="'background-image: url(&quot;'+ @{/img/253craft/game (6).png} +'&quot;)'">
+                    </a>
+                </div>
+
+                <div class="server_img_pop">
+                    <a th:href="@{/img/253craft/game (7).png}" class="popup-img"
+                       th:style="'background-image: url(&quot;'+ @{/img/253craft/game (7).png} +'&quot;)'">
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--		引入抽取的footer-->
+    <div th:replace="comm/navbar::footer"></div>
+
+    <!--		引入live2d-->
+    <div th:replace="comm/live2d::live2d"></div>
+</div>
+
+<script th:src="@{/plugins/jquery/jquery-3.4.1.min.js}"></script>
+<!-- live2d 实现拖动效果，需引入 JQuery UI -->
+<script th:src="@{/plugins/live2d/assets/jquery-ui.min.js}"></script>
+<script th:src="@{/plugins/bootstrap-3.3.7/js/bootstrap.js}"></script>
+<script th:src="@{/plugins/magnific-popup/js/jquery.magnific-popup.js}"></script>
+<script th:src="@{/plugins/live2d/assets/waifu-tips.min.js}"></script>
+<script th:src="@{/plugins/live2d/assets/live2d.min.js}"></script>
+<script type="text/javascript">
+    /* 可直接修改部分参数 */
+    live2d_settings['modelId'] = 5; // 默认模型 ID
+    live2d_settings['modelTexturesId'] = 1; // 默认材质 ID
+    live2d_settings['modelStorage'] = false; // 不储存模型 ID
+    live2d_settings['canCloseLive2d'] = false; // 隐藏 关闭看板娘 按钮
+    live2d_settings['canTurnToHomePage'] = false; // 隐藏 返回首页 按钮
+    live2d_settings['waifuSize'] = '280x250'; // 看板娘大小
+    live2d_settings['waifuTipsSize'] = '250x70'; // 提示框大小
+    live2d_settings['waifuFontSize'] = '12px'; // 提示框字体
+    live2d_settings['waifuToolFont'] = '14px'; // 工具栏字体
+    live2d_settings['waifuToolLine'] = '20px'; // 工具栏行高
+    live2d_settings['waifuToolTop'] = '0px'; // 工具栏顶部边距
+    live2d_settings['waifuDraggable'] = 'axis-x'; // 拖拽样式
+    /* 在 initModel 前添加 */
+    initModel("/253craft/plugins/live2d/assets/waifu-tips.json")
+</script>
+<script th:src="@{/js/custom.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+body {
+	margin: 0 0;
+}
+
+div.header {
+	margin: 0 auto;
+	padding: 40px 20px;
+	text-align: center;
+	background-color: #e2e2e2;
+}
+
+div.header h1 {
+	margin: 0 0;
+}
+
+div.articleList {
+	margin: 0 auto;
+    background-color: #efefef;
+    padding-bottom: 150px;
+}
+
+div.articleList table {
+	position: relative;
+	width: 100%;
+	text-align: center;
+}
+
+.nav-bar {
+	background-color: #585858;
+	padding: 0 20px;
+}
+
+.nav-bar a {
+	width: 150px;
+	padding: 20px 20px;
+	color: white;
+	text-align: center;
+	font-size: 2em;
+	display: inline-block;
+	padding: 15px 15px;
+	text-decoration: none;
+	background: green;
+}
+
+.article-list {
+	border: 1px solid black;
+}
+
+.article-list a {
+	color: white;
+	text-align: center;
+	font-size: 1.5em;
+	display: inline-block;
+	padding: 30px 15px;
+	text-decoration: none;
+	background: #555555;
+	width: 100px;
+}
+
+#next-page {
+	
+}
+
+#next-page a {
+	border-radius: 0;
+	padding: 10px 30px;
+}
+
+#previous-page {
+	
+}
+
+#previous-page a {
+	border-radius: 0;
+	padding: 10px 30px;
+}
+
+.article-list td {
+	border: 1px solid black;
+}
+
+.article-list th {
+	border: 1px solid black;
+}
+
+.select-pages-item {
+	padding: 10px 20px;
+	border-radius: 0;
+}
+
+a.delete {
+	background: red;
+}
+
+a.update {
+	background: green;
+}
+
+.title {
+	font-size: 1.5em;
+}
+
+.delete{
+	background-color: red;
+	color: white;
+	text-align: center;
+	font-size: 1.5em;
+	display: inline-block;
+	padding: 30px 15px;
+	text-decoration: none;
+	width: 100px;
+	border: 0px;
+}

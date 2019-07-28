@@ -1,0 +1,147 @@
+.news-article-list ul, .news-article-rate ul {
+	padding: 0 0;
+}
+
+.news-article-list ul li {
+	width: 100%;
+	margin-bottom: 20px;
+	border-bottom: 1px dashed #ededed;
+	padding-bottom: 20px;
+}
+
+.select-pages-item {
+	border-radius: 0;
+	height: inherit;
+	width: inherit;
+}
+
+#select-pages{
+	border-radius: 0;
+	display: inline-block;
+	height: 40px;
+	width: 100px;
+}
+
+.news-article {
+	float: left;
+	width: 60%;
+	padding-left: 20px;
+}
+
+.news-article-content {
+	margin-top: 20px;
+}
+
+.news-article-content span {
+	-webkit-line-clamp: 3;
+	max-width: 450px;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	white-space: normal;
+}
+
+.info {
+	margin-left: 5px;
+}
+
+.news-article-img {
+	float: left;
+	width: 40%;
+}
+
+.news-article-img a img {
+	width: 100%;
+}
+
+.news-article-name {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.news-article-name a:hover {
+	color: #26b77b;
+}
+
+.left {
+	border-right: 1px solid #ededed;
+}
+
+.news-article-name a {
+	max-width: 450px;
+	font-size: 1.6em;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	color: black;
+}
+
+.news-article-rate li a {
+	display: inline-block;
+	font-size: 1.2em;
+	word-break: keep-all;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: black;
+	width: 70%;
+}
+
+.news-article-rate li a:hover {
+	color: #26b77b;
+}
+
+.news-article-rate li {
+	margin-bottom: 5px;
+}
+
+.ar-visit {
+	width: 20%;
+}
+
+.newstitle {
+	height: 40px;
+	line-height: 30px;
+	border-bottom: 1px solid #ededed;
+	padding-bottom: 10px;
+	margin-bottom: 15px;
+}
+
+.newstitle i {
+	display: inline-block;
+	float: left;
+	width: 4px;
+	height: 20px;
+	margin-top: 5px;
+	background: #26b77b;
+}
+
+.newstitle h3, .newstitle h4 {
+	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+	margin-bottom: 0;
+	margin-right: 0;
+	font-size: 17px;
+	color: #333;
+	font-weight: 400;
+}
+
+#next-page {
+	
+}
+
+#next-page a {
+	border-radius: 0;
+	padding: 10px 30px;
+}
+
+#previous-page {
+	
+}
+
+#previous-page a {
+	border-radius: 0;
+	padding: 10px 30px;
+}

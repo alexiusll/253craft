@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员主页</title>
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap-3.3.7/css/bootstrap.css}" type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/css/admin.css}"/>
+</head>
+<body>
+<div class="header">
+    <h1>253Craft的简易管理系统v0.11</h1>
+</div>
+<div class="nav-bar">
+    <a th:href="@{/index.html}">首頁</a>
+    <a th:href="@{/admin/newArticle}">新增文章</a>
+    <a th:href="@{'/admin?currentPage=1&sort=article'}">文章表</a>
+    <a th:href="@{'/admin?currentPage=1&sort=news'}">新闻表</a>
+</div>
+
+<div class="articleList">
+    <table class="article-list">
+        <tr>
+            <th width="10%">编号</th>
+            <th width="20%">标题</th>
+            <th width="10%">作者</th>
+            <th width="10%">分类</th>
+            <th width="10%">创建时间</th>
+            <th width="10%">评论数</th>
+            <th width="10%">点击数</th>
+            <th width="20%">操作</th>
+        </tr>
+
+        <tr th:each="art : ${arts}">
+            <td><a th:href="@{'/art/' + ${art.getId()}}" th:text="${art.getId()}"></a></td>
+            <td class="title" th:text="${art.getTitle()}"></td>
+            <td class="title" th:text="${art.getAuthor()}"></td>
+            <td class="title" th:text="${art.getSort()}"></td>
+            <td class="title" th:text="${art.getTimeString()}"></td>
+            <td class="title" th:text="${art.getComment()}"></td>
+            <td class="title" th:text="${art.getVisit()}"></td>
+            <td>
+                <button class="delete" th:attr="del_uri=@{'/admin/art/'+ ${art.getId()}}" th:if="${session.username != null}">删除</button>
+                <a class="update" th:href="@{'/admin/updateArticle/'+ ${art.getId()}}" th:if="${session.username != null}">更新</a>
+            </td>
+        </tr>
+    </table>
+
+    <div class="article-page">
+        <ul class="pager">
+            <li id="previous-page" th:if="${currentPage != 1}"><a th:href="@{'/admin?currentPage=' + ${currentPage - 1} + '&sort=' + ${sort}}">上一页</a></li>
+
+            <li id = "select-pages">
+                <select class="select-pages-item" onchange="location.href=this.value">
+                    <option th:each="pageNo : ${#numbers.sequence(1,totalPageCount)}"
+                            th:value="@{'/admin?currentPage=' + ${pageNo} + '&sort=' + ${sort}}" th:selected="${currentPage == pageNo ? 'selected':'false' }"
+                            th:text="${'第'+ pageNo + '页'}">
+                        第1页
+                    </option>
+                </select>
+            </li>
+
+            <li id="next-page" th:if="${currentPage < totalPageCount}"><a th:href="@{'/admin?currentPage=' + ${currentPage + 1} + '&sort=' + ${sort}}">下一页</a></li>
+        </ul>
+    </div>
+</div>
+
+<form id="deleteStuForm" method="post">
+    <input type="hidden" name="_method" value="delete">
+</form>
+
+<script th:src="@{/plugins/jquery/jquery-3.4.1.min.js}"></script>
+<script th:src="@{/plugins/bootstrap-3.3.7/js/bootstrap.js}"></script>
+<script>
+    $(".delete").click(function(){
+        //删除当前文章
+        $("#deleteStuForm").attr("action",$(this).attr("del_uri")).submit();
+        return false;
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+.bg-color-1 {
+	background: #ff7878bd;
+}
+
+.bg-color-2 {
+	background: #edad8ebd;
+}
+
+.bg-color-3 {
+	background: #446adabd;
+}
+
+.bg-color-4 {
+	background: #993fbdbd;
+}
+
+.bg-color-5 {
+	background: #50c955bd;
+}
+
+.bg-color-6 {
+	background: #6dd4dabd;
+}
+
+.nav-item-inner:hover {
+	transition: all 0.5s;
+	background: #ffffff00;
+	color: white;
+}
+
+.nav-item {
+	height: 500px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	padding: 0 0;
+	margin: 0 0;
+	background-size: cover;
+}
+
+.nav-item-inner {
+	display: block;
+	color: white;
+	height: 100%;
+}
+
+.nav-item-title {
+	font-size: 4em;
+	position: absolute;
+	left: 40px;
+	top: 40px;
+	font-weight: 900;
+}
+
+.nav-item-color {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	opacity: 0.9;
+}
+
+.nav-item-content {
+	font-size: 3em;
+	position: absolute;
+	left: 40px;
+	bottom: 100px;
+	font-weight: 800;
+}
+
+.nav-item:nth-child(odd) {
+	
+}
+
+.nav-item-container {
+	
+}

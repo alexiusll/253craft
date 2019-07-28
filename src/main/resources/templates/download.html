@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>客户端下载</title>
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap-3.3.7/css/bootstrap.css}" type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/plugins/live2d/assets/waifu.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/css/download.css}" type="text/css">
+</head>
+<body>
+<div class="wrapper">
+    <!--		引入抽取的topbar-->
+    <div th:replace="comm/navbar::topbar(activeUri = 'download')"></div>
+
+    <div class="fakeHeader"></div>
+
+    <div id="Download_container">
+        <div id="download_btns">
+            <div id="download_logo">
+                <img th:src="@{/img/web/logo_big.png}" alt="我的世界游戏下载" />
+            </div>
+            <div id="middle_nav">
+                <div class="download_btn download_btn_1"
+                     onclick="javascript:window.open('/253craft/download/game (1).jpg')">
+                    <p>1.12.2客户端极速版</p>
+                    <span>253CRAFT我的世界服务器1.12.2客户端的流畅版本，如果电脑配置不够请下载这个版本</span>
+                    <div class="download_icon download_icon_1"></div>
+                </div>
+                <div class="download_btn download_btn_2"
+                     onclick="javascript:window.open('')">
+                    <p>1.12.2客户端稳定版</p>
+                    <span>253CRAFT我的世界服务器1.12.2客户端的稳定版本，如果电脑配置足够请下载这个版本</span>
+                    <div class="download_icon download_icon_2"></div>
+                </div>
+                <div class="download_btn download_btn_3"
+                     onclick="window.open('','_self')">
+                    <p>更多下载方式</p>
+                    <span>如果网站下载速度慢，可以点击这里有更多下载方式</span>
+                    <div class="download_icon download_icon_3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--		引入抽取的footer-->
+    <div th:replace="comm/navbar::footer"></div>
+
+</div>
+
+<!--		引入live2d-->
+<div th:replace="comm/live2d::live2d"></div>
+
+<script th:src="@{/plugins/jquery/jquery-3.4.1.min.js}"></script>
+<!-- live2d 实现拖动效果，需引入 JQuery UI -->
+<script th:src="@{/plugins/live2d/assets/jquery-ui.min.js}"></script>
+<script th:src="@{/plugins/bootstrap-3.3.7/js/bootstrap.js}"></script>
+<script th:src="@{/plugins/live2d/assets/waifu-tips.min.js}"></script>
+<script th:src="@{/plugins/live2d/assets/live2d.min.js}"></script>
+<script type="text/javascript">
+    /* 可直接修改部分参数 */
+    live2d_settings['modelId'] = 5; // 默认模型 ID
+    live2d_settings['modelTexturesId'] = 1; // 默认材质 ID
+    live2d_settings['modelStorage'] = false; // 不储存模型 ID
+    live2d_settings['canCloseLive2d'] = false; // 隐藏 关闭看板娘 按钮
+    live2d_settings['canTurnToHomePage'] = false; // 隐藏 返回首页 按钮
+    live2d_settings['waifuSize'] = '280x250'; // 看板娘大小
+    live2d_settings['waifuTipsSize'] = '250x70'; // 提示框大小
+    live2d_settings['waifuFontSize'] = '12px'; // 提示框字体
+    live2d_settings['waifuToolFont'] = '14px'; // 工具栏字体
+    live2d_settings['waifuToolLine'] = '20px'; // 工具栏行高
+    live2d_settings['waifuToolTop'] = '0px'; // 工具栏顶部边距
+    live2d_settings['waifuDraggable'] = 'axis-x'; // 拖拽样式
+    /* 在 initModel 前添加 */
+    initModel("/253craft/plugins/live2d/assets/waifu-tips.json")
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>主页</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap-3.3.7/css/bootstrap.css}" type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/plugins/editormd/css/editormd.preview.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/css/article.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/md_to_html.css}">
+</head>
+
+<body>
+
+<!--<c:choose>-->
+<!--    <c:when test="${requestScope.info eq null}">-->
+
+<!--    </c:when>-->
+
+<!--    <c:when test="${requestScope.info eq 'comment failed!'}">-->
+<!--        <script>-->
+<!--            alert("发表评论失败");-->
+<!--        </script>-->
+<!--    </c:when>-->
+
+<!--    <c:when test="${requestScope.info eq 'comment success!'}">-->
+<!--        <script>-->
+<!--            alert("成功发表评论");-->
+<!--        </script>-->
+<!--    </c:when>-->
+
+<!--    <c:when test="${requestScope.info eq 'repeat submit comment!'}">-->
+<!--        <script>-->
+<!--            alert("请勿重复发表评论！");-->
+<!--        </script>-->
+<!--    </c:when>-->
+<!--</c:choose>-->
+
+<div class="wrapper">
+
+    <!--		引入抽取的topbar-->
+    <div th:replace="comm/navbar::topbar(activeUri = 'article')"></div>
+
+    <div class="fakeHeader"></div>
+
+    <div class="main article-content">
+        <article>
+            <div class="article-header">
+                <span class="article-header-title" th:text="${article.getTitle()}"></span>
+                <p>
+                    <span   class="article-info"
+                            th:text="${article.getTimeString()} + '&nbsp;&nbsp;&nbsp;作者:' +
+                            ${article.getAuthor()} + '&nbsp;&nbsp;&nbsp;浏览:' + ${article.getVisit()}">
+                    </span>
+                    <a th:href="@{'/admin/updateArticle/'+ ${article.getId()}}" th:if="${session.username !=  null}">&nbsp;&nbsp;&nbsp;编辑</a>
+                </p>
+            </div>
+            <!-- 将md文档转化为HTML文档 -->
+            <div id="markdown-view">
+                <!-- Server-side output Markdown text -->
+                <textarea style="display: none;" th:text="${article.getContent()}"></textarea>
+            </div>
+        </article>
+
+        <div class="comment-container">
+            <div class="comment-title" th:text="'评论('+ ${article.comment}+')'"></div>
+            <div class="comment-content">
+                    <div class="comment-item-container" th:each="cm : ${comments}">
+                        <div class="comment-item">
+                            <div class="comment-item-avatar">
+                                <img class="comment-item-avatar-img" th:src="@{/img/web/normal-user.jpg}">
+                            </div>
+                            <div class="comment-item-body">
+                                <div class="comment-item-header">
+                                    <span class="comment-item-author" th:text="${cm.getNickname()}">昵称</span>
+                                    <span th:text="${cm.getTimeString()}">时间</span>
+                                </div>
+                                <div class="comment-item-content" th:text="${cm.getContent()}">内容</div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <div class="add-comment-container">
+            <form th:action="@{'/addComment?articleId='+ ${article.getId()}}" method="post">
+                <div class="add-comment-nickname">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true" style="font-size: 1.5em"> </span>
+                    <input type="text" name="nickname" required="required"/>
+                </div>
+                <div class="add-comment-content">
+                    <textarea style="resize: none; width: 100%; height: 100px;" name="content"
+                              required="required"></textarea>
+                </div>
+                <div class="add-comment-buttom">
+                    <input class="btn btn-default" type="submit" value="评论">
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!--		引入抽取的footer-->
+    <div th:replace="comm/navbar::footer"></div>
+
+</div>
+
+<script th:src="@{/plugins/jquery/jquery-3.4.1.min.js}"></script>
+<script th:src="@{/plugins/bootstrap-3.3.7/js/bootstrap.js}"></script>
+<script th:src="@{/plugins/editormd/editormd.js}"></script>
+<script th:src="@{/plugins/editormd/lib/marked.min.js}"></script>
+<script th:src="@{/plugins/editormd/lib/prettify.min.js}"></script>
+<script>
+    $(function () {
+        var testView = editormd.markdownToHTML("markdown-view", {
+            htmlDecode: "style,script,iframe",
+            emoji: true,
+            taskList: true,
+            tex: true, // 默认不解析
+        });
+    });
+
+    $(document).ready(function (){
+        var info=getQueryVariable("info");
+        if (info == "success"){
+            alert("发表评论成功");
+        } else if(info =="failed"){
+            alert("发表评论失败");
+        } else if(info =="repeat"){
+            alert("请勿重复发表评论");
+        } else{}
+    });
+
+    function getQueryVariable(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);//search,查询？后面的参数，并匹配正则
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>新增文章</title>
+    <link rel="stylesheet" th:href="@{/plugins/editormd/css/editormd.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/article-editor.css}" type="text/css" media="all">
+</head>
+<body>
+<form method="post" th:action="@{/admin/art}">
+    <input type="hidden" name="_method" value="put"/>
+    <div class="article-info">
+        <p>
+            <span class="help">id</span>
+            <input type="text" class="form-control" name="id" th:value="${art.getId()}" readonly="readonly">
+            <!-- title -->
+            <span class="help">标题</span>
+            <input type="text" class="form-control" name="title" th:value="${art.getTitle()}">
+            <!-- time -->
+            <span class="help">时间</span>
+            <input type="text" class="form-control" name="time" th:value="${#dates.format(art.getTime(), 'yyyy-MM-dd HH:mm:ss')}" readonly="readonly">
+            <!-- author-->
+            <span class="help">作者</span>
+            <input type="text" class="form-control" name="author" th:value="${art.getAuthor()}" readonly="readonly">
+        </p>
+
+        <p>
+            <!-- sort -->
+            <span class="help">分类</span>
+            <select name="sort" th:value="${art.getSort()}">
+                <option value="article">服务器文章</option>
+                <option value="news">服务器新闻</option>
+            </select>
+            <span class="help">点击量</span>
+            <input type="text" class="form-control" name="visit" th:value="${art.getVisit()}" readonly="readonly">
+
+            <span class="help">评论数</span>
+            <input type="text" class="form-control" name="comment" th:value="${art.getComment()}" readonly="readonly">
+        </p>
+    </div>
+    <!-- content -->
+    <div id="mdView">
+        <textarea style="display: none;" th:text="${art.getContent()}"></textarea>
+    </div>
+    <input class="btn btn-default submit-btn" type="submit" value="提交" />
+</form>
+
+
+<script th:src="@{/plugins/jquery/jquery-3.4.1.min.js}"></script>
+<script th:src="@{/plugins/editormd/editormd.js}"></script>
+<script>
+    var editor;
+    $(function() {
+        editor = editormd("mdView", {
+            // width: "100%",
+            // height: "100%",
+            // markdown: "xxxx",     // dynamic set Markdown text
+            height : "800px",
+            path : "/253craft/plugins/editormd/lib/", // Autoload modules mode, codemirror, marked... dependents libs path
+            emoji : true,
+            taskList : true,
+            tocm : true,
+            tex : true,
+            flowChart : true,
+            saveHTMLToTextarea : true,
+            imageUpload : true,
+            imageFormats : [ "jpg", "jpeg", "gif", "png", "bmp", "webp" ],
+            imageUploadURL : "/253craft/upload",
+            //后台只需要返回一个 JSON 数据
+            onload : function() {
+                //console.log("onload =>", this, this.id, this.settings);
+            }
+        });
+    });
+
+    $("#get-md-btn").bind('click', function() {
+        alert(editor.getMarkdown());
+    });
+</script>
+</body>
+</html>

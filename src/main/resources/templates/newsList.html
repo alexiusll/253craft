@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>服务器新闻</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap-3.3.7/css/bootstrap.css}" type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/plugins/live2d/assets/waifu.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/css/articleList.css}" type="text/css">
+</head>
+
+<body>
+<div class="wrapper">
+
+    <!--		引入抽取的topbar-->
+    <div th:replace="comm/navbar::topbar(activeUri = 'news')"></div>
+
+    <div class="fakeHeader"></div>
+
+    <div class="middle-section">
+        <div class="container">
+            <div class="left col-xs-8 col-sm-8">
+                <div class="newstitle">
+                    <i></i>
+                    <h3>服务器新闻</h3>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="news-article-list">
+                    <ul>
+                        <li th:each="art : ${arts}">
+                            <div class="news-article-img">
+                                <a th:href="@{'/art/' + ${art.getId()}}">
+                                    <img th:src="@{/img/web/article-img (1).jpg}" alt="">
+                                </a>
+                            </div>
+                            <div class="news-article">
+                                <div class="news-article-name">
+                                    <a th:href="@{'/art/' + ${art.getId()}}" th:text="${art.getTitle()}"></a>
+                                </div>
+                                <div class="news-article-msg">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    <span th:text="${art.getAuthor()}"></span>
+                                    <span class="info glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                    <span th:text="${art.getVisit()}"></span>
+                                    <span class="info glyphicon glyphicon-comment" aria-hidden="true"></span>
+                                    <span th:text="${art.getComment()}"></span>
+                                    <span class="info glyphicon glyphicon-time" aria-hidden="true"></span>
+                                    <span th:text="${art.getTimeString()}"></span>
+                                </div>
+                                <div class="news-article-content">
+                                    <span th:text="${art.getContent()}"></span>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="article-page">
+                    <ul class="pager">
+                        <li id="previous-page" th:if="${currentPage != 1}"><a th:href="@{'/news/' + ${currentPage - 1}}">上一页</a></li>
+
+                        <li id = "select-pages">
+                            <select class="select-pages-item" onchange="location.href=this.value">
+                                <option th:each="pageNo : ${#numbers.sequence(1,totalPageCount)}"
+                                        th:value="@{'/news/' + ${pageNo}}" th:selected="${currentPage == pageNo ? 'selected':'false' }"
+                                        th:text="${'第'+ pageNo + '页'}">
+                                    第1页
+                                </option>
+                            </select>
+                        </li>
+
+                        <li id="next-page" th:if="${currentPage < totalPageCount}"><a th:href="@{'/news/' + ${currentPage + 1}}">下一页</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="right col-xs-4 col-sm-4">
+
+                <div class="news-article-rate">
+
+                    <div class="newstitle">
+                        <i></i>
+                        <h3>服务器新闻排行</h3>
+                        <div class="clearfix"></div>
+                    </div>
+                    <ul>
+                        <li th:each="art : ${articlesRank}">
+                            <a th:href="@{'/art/' + ${art.getId()}}" th:text="${art.getTitle()}"></a>
+                            <span class="info glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                            <span class="ar-visit" th:text="${art.getVisit()}"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--		引入抽取的footer-->
+    <div th:replace="comm/navbar::footer"></div>
+
+</div>
+
+<!--		引入live2d-->
+<div th:replace="comm/live2d::live2d"></div>
+
+<script th:src="@{/plugins/jquery/jquery-3.4.1.min.js}"></script>
+<!-- live2d 实现拖动效果，需引入 JQuery UI -->
+<script th:src="@{/plugins/live2d/assets/jquery-ui.min.js}"></script>
+<script th:src="@{/plugins/bootstrap-3.3.7/js/bootstrap.js}"></script>
+<script th:src="@{/plugins/live2d/assets/waifu-tips.min.js}"></script>
+<script th:src="@{/plugins/live2d/assets/live2d.min.js}"></script>
+<script type="text/javascript">
+    /* 可直接修改部分参数 */
+    live2d_settings['modelId'] = 5; // 默认模型 ID
+    live2d_settings['modelTexturesId'] = 1; // 默认材质 ID
+    live2d_settings['modelStorage'] = false; // 不储存模型 ID
+    live2d_settings['canCloseLive2d'] = false; // 隐藏 关闭看板娘 按钮
+    live2d_settings['canTurnToHomePage'] = false; // 隐藏 返回首页 按钮
+    live2d_settings['waifuSize'] = '280x250'; // 看板娘大小
+    live2d_settings['waifuTipsSize'] = '250x70'; // 提示框大小
+    live2d_settings['waifuFontSize'] = '12px'; // 提示框字体
+    live2d_settings['waifuToolFont'] = '14px'; // 工具栏字体
+    live2d_settings['waifuToolLine'] = '20px'; // 工具栏行高
+    live2d_settings['waifuToolTop'] = '0px'; // 工具栏顶部边距
+    live2d_settings['waifuDraggable'] = 'axis-x'; // 拖拽样式
+    /* 在 initModel 前添加 */
+    initModel("/253craft/plugins/live2d/assets/waifu-tips.json")
+</script>
+
+</body>
+</html>

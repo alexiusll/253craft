@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>服务器介绍</title>
+    <link rel="stylesheet" th:href="@{/plugins/bootstrap-3.3.7/css/bootstrap.css}" type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/plugins/live2d/assets/waifu.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css" media="all">
+    <link rel="stylesheet" th:href="@{/css/introduce.css}" type="text/css">
+</head>
+<body>
+
+<!--		引入抽取的topbar-->
+<div th:replace="comm/navbar::topbar(activeUri = 'introduce')"></div>
+
+<div class="fakeHeader"></div>
+
+<div class="banner"
+     th:style="'background: url(&quot;' + @{/img/253craft/game (2).png} + '&quot;) no-repeat; background-position: center center;'">
+    <div class="banner-container">
+        <img class="logo-big-img" th:src="@{/img/web/logo-introduce.png}" alt=""
+             style="height: 100px;">
+    </div>
+</div>
+
+<div class="nav-item-container">
+    <div class="col-sm-5 col-xs-6 nav-item"
+         th:style="'background-image: url(&quot;' + @{/img/253craft/game (10).png} + '&quot;)'">
+        <a href="#" class="nav-item-inner bg-color-1">
+            <span class="nav-item-title">01.</span>
+            <span class="nav-item-content">服务器版本</span>
+        </a>
+
+    </div>
+
+    <div class="col-sm-7 col-xs-6 nav-item"
+         th:style="'background-image: url(&quot;' + @{/img/253craft/game (8).png} + '&quot;)'">
+        <a href="#" class="nav-item-inner bg-color-2">
+            <span class="nav-item-title">02.</span>
+            <span class="nav-item-content">服务器安装的插件整理和介绍</span>
+        </a>
+    </div>
+
+    <div class="col-sm-7 col-xs-6 nav-item"
+         th:style="'background-image: url(&quot;' + @{/img/253craft/game (9).png} + '&quot;)'">
+        <a href="#" class="nav-item-inner bg-color-3">
+            <span class="nav-item-title">03.</span>
+            <span class="nav-item-content">服务器Mods整理和介绍</span>
+        </a>
+    </div>
+
+    <div class="col-sm-5 col-xs-6 nav-item"
+         th:style="'background-image: url(&quot;' + @{/img/253craft/game (7).png} + '&quot;)'">
+        <a href="#" class="nav-item-inner bg-color-4">
+            <span class="nav-item-title">04.</span>
+            <span class="nav-item-content">服务器的命令和教程</span>
+        </a>
+    </div>
+
+    <div class="col-sm-5 col-xs-6 nav-item"
+         th:style="'background-image: url(&quot;' + @{/img/253craft/game (4).png} + '&quot;)'">
+        <a href="#" class="nav-item-inner bg-color-5">
+            <span class="nav-item-title">05.</span>
+            <span class="nav-item-content">客户端和mods包的使用方法</span>
+        </a>
+    </div>
+
+    <div class="col-sm-7 col-xs-6 nav-item"
+         th:style="'background-image: url(&quot;' + @{/img/253craft/game (6).png} + '&quot;)'">
+        <a href="#" class="nav-item-inner bg-color-6">
+            <span class="nav-item-title">06.</span>
+            <span class="nav-item-content">更新日志</span>
+        </a>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+
+<!--		引入抽取的footer-->
+<div th:replace="comm/navbar::footer"></div>
+
+<!--		引入live2d-->
+<div th:replace="comm/live2d::live2d"></div>
+
+<script th:src="@{/plugins/jquery/jquery-3.4.1.min.js}"></script>
+<!-- live2d 实现拖动效果，需引入 JQuery UI -->
+<script th:src="@{/plugins/live2d/assets/jquery-ui.min.js}"></script>
+<script th:src="@{/plugins/bootstrap-3.3.7/js/bootstrap.js}"></script>
+<script th:src="@{/plugins/live2d/assets/waifu-tips.min.js}"></script>
+<script th:src="@{/plugins/live2d/assets/live2d.min.js}"></script>
+<script type="text/javascript">
+    /* 可直接修改部分参数 */
+    live2d_settings['modelId'] = 5; // 默认模型 ID
+    live2d_settings['modelTexturesId'] = 1; // 默认材质 ID
+    live2d_settings['modelStorage'] = false; // 不储存模型 ID
+    live2d_settings['canCloseLive2d'] = false; // 隐藏 关闭看板娘 按钮
+    live2d_settings['canTurnToHomePage'] = false; // 隐藏 返回首页 按钮
+    live2d_settings['waifuSize'] = '280x250'; // 看板娘大小
+    live2d_settings['waifuTipsSize'] = '250x70'; // 提示框大小
+    live2d_settings['waifuFontSize'] = '12px'; // 提示框字体
+    live2d_settings['waifuToolFont'] = '14px'; // 工具栏字体
+    live2d_settings['waifuToolLine'] = '20px'; // 工具栏行高
+    live2d_settings['waifuToolTop'] = '0px'; // 工具栏顶部边距
+    live2d_settings['waifuDraggable'] = 'axis-x'; // 拖拽样式
+    /* 在 initModel 前添加 */
+    initModel("/253craft/plugins/live2d/assets/waifu-tips.json")
+</script>
+
+</body>
+</html>

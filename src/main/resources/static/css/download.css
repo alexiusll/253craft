@@ -1,0 +1,105 @@
+#download_btns {
+	margin: 0px auto;
+}
+
+#middle_nav {
+	width: 1200px;
+	margin: 0px auto;
+	margin-top: 40px;
+	overflow: hidden;
+	display: flex;
+}
+
+.download_btn_1 {
+	background-color: #45adacbf;
+	color: #cccc99;
+}
+
+.download_btn {
+	width: 400px;
+	height: 400px;
+	padding: 15px;
+	background-image: url("../img/web/narrow.png");
+	background-position: 20px 355px;
+	margin-left: 50px;
+	background-repeat: no-repeat;
+	flex: 1;
+}
+
+#Download_container {
+	padding: 100px 0;
+	background-image: url("../img/253craft/game (5).jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#download_logo img {
+	margin: 0 auto;
+	display: block;
+}
+
+.download_btn p {
+	line-height: 36px;
+	color: white;
+	font-size: 25px;
+	font-weight: 600;
+}
+
+.download_btn_2 {
+	background-color: #29be0abf;
+	color: #b5ebaa;
+}
+
+.download_btn_3 {
+	background-color: #313131bf;
+	color: #999999;
+}
+
+.download_icon_1 {
+	background-image: url("../img/Minecraft/minecraft (1).png");
+	background-size: 256px 256px;
+}
+
+.download_icon_2 {
+	background-image: url("../img/Minecraft/minecraft (2).png");
+	background-size: 256px 256px;
+}
+
+.download_icon_3 {
+	background-image: url("../img/other/baiduyun.png");
+	background-size: 256px 256px;
+}
+
+.download_btn:hover .download_icon {
+	transform: scale(0.9);
+	transition: all ease .5s;
+}
+
+.download_btn_2:hover {
+	background-color: #33cc00bf;
+	cursor: pointer;
+}
+
+.download_btn_3:hover {
+	background-color: #424242bf;
+	cursor: pointer;
+}
+
+.download_icon {
+	clear: both;
+	height: 256px;
+	width: 256px;
+	margin: 0px auto;
+	margin-top: 15px;
+}
+
+.download_btn:hover {
+	background-position: 30px 355px;
+	transition: all ease .5s;
+	cursor: pointer;
+}
+
+.download_btn_1:hover {
+	background-color: #57c7c7bf;
+}
