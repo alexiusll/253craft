@@ -73,13 +73,13 @@ public class FileController {
         try {
             ApplicationHome h = new ApplicationHome(getClass());
             File jarF = h.getSource();
-            File path = new File(jarF.getParentFile().toString()+ "\\classes\\static\\img\\upload\\");
+            File path = new File(jarF.getParentFile().toString()+ File.separator+"classes"+File.separator+"static"+File.separator+"img"+File.separator+"upload"+File.separator);
             if(!path.exists()){
                 path.mkdir();
             }
             System.out.println(path.getAbsolutePath());
 
-            File dest = new File(path.getAbsolutePath()+"\\"+ ft.format(dNow) + LinkenUtils.getUUID() +"."+ext);
+            File dest = new File(path.getAbsolutePath()+File.separator+ ft.format(dNow) + LinkenUtils.getUUID() +"."+ext);
             System.out.println(dest.getAbsolutePath());
 
             if(!dest.exists()){
